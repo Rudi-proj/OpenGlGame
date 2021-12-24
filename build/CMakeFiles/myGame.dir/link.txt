@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/myGame.dir/glad.c.o CMakeFiles/myGame.dir/main.cpp.o -o myGame  -lGL -ldl -lglfw 

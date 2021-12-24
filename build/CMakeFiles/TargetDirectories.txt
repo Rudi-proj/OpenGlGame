@@ -1,0 +1,3 @@
+/home/rudi/Development/OpenGlGame/build/CMakeFiles/rebuild_cache.dir
+/home/rudi/Development/OpenGlGame/build/CMakeFiles/edit_cache.dir
+/home/rudi/Development/OpenGlGame/build/CMakeFiles/myGame.dir
