@@ -15,6 +15,23 @@ void Input::keyPressedCallback(GLFWwindow *window, int key, int scancode, int ac
     {
         //key is in map
         std::cout << "Key " << key <<" in map\n";
+        keyPressedMap[key] = true;
+    }
+}
+
+bool Input::isKeyPressed(int key)
+{
+    bool isPressed = keyPressedMap[key];
+    if(isPressed){
+        keyPressedMap[key] = false;
+    } 
+    return isPressed;
+}
+
+void Input::handleKeyboardInput()
+{
+    if(isKeyPressed(GLFW_KEY_F1))
+    {
     }
 }
 

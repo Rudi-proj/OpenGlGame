@@ -9,4 +9,8 @@ namespace Input
     void initMap();
 
     void keyPressedCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
+    bool isKeyPressed(int key);
+
+    void handleKeyboardInput();
 }
