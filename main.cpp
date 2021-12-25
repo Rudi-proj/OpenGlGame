@@ -1,7 +1,7 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "input.h"
+#include "input.hpp"
 
 int main()
 {
@@ -11,6 +11,8 @@ int main()
 				  << "\n";
 		return -1;
 	}
+
+	Input::initMap();
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
