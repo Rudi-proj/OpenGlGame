@@ -38,7 +38,7 @@ void Input::handleKeyboardInput(GameWindow* window)
 
     if(isKeyPressed(GLFW_KEY_F1))
     {
-        window->setFullscreen(true);
+        window->toggleFullscreen();
     }
 }
 

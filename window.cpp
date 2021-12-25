@@ -93,11 +93,24 @@ void GameWindow::setFullscreen(bool fullscreen)
 	else
 	{
 		//fullscree -> put in windowed mode
-
+		glfwSetWindowMonitor(window, nullptr, 0, 0, windowWidth, windowHeight, GLFW_DONT_CARE);
 	}
+	isFullscreenMode = fullscreen;
 }
 
 void GameWindow::destroyWindow()
 {
 	glfwDestroyWindow(window);
+}
+
+void GameWindow::toggleFullscreen()
+{
+	if(isFullscreenMode)
+	{
+		setFullscreen(false);
+	}
+	else
+	{
+		setFullscreen(true);
+	}
 }

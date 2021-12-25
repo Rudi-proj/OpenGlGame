@@ -11,7 +11,7 @@ public:
     void gameLoop();
 
     bool isFullscreen();
-    void setFullscreen(bool fullscreen);
+    void toggleFullscreen();
 
     void destroyWindow();
 
@@ -23,4 +23,5 @@ private:
 	const char *windowTitle = "myGame";
     GLFWwindow* window;
     bool isFullscreenMode = false;
+    void setFullscreen(bool fullscreen);
 };
