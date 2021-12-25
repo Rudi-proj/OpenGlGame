@@ -2,6 +2,8 @@
 
 #include <GLFW/glfw3.h>
 #include <map>
+#include "window.hpp"
+
 
 namespace Input
 {
@@ -12,5 +14,5 @@ namespace Input
 
     bool isKeyPressed(int key);
 
-    void handleKeyboardInput();
+    void handleKeyboardInput(GameWindow* window);
 }

@@ -7,6 +7,11 @@
 int main()
 {
 	Input::initMap();
+	GameWindow gWindow;
+
+	gWindow.initGlfw();
+	gWindow.createWindow();
+	gWindow.gameLoop();
 
 	return 0;
 }

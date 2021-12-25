@@ -2,6 +2,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "input.hpp"
+#include "window.hpp"
 
 namespace Input
 {
@@ -24,14 +25,20 @@ bool Input::isKeyPressed(int key)
     bool isPressed = keyPressedMap[key];
     if(isPressed){
         keyPressedMap[key] = false;
-    } 
+    }
     return isPressed;
 }
 
-void Input::handleKeyboardInput()
+void Input::handleKeyboardInput(GameWindow* window)
 {
+    if(isKeyPressed(GLFW_KEY_X))
+    {
+        window->destroyWindow();
+    }
+
     if(isKeyPressed(GLFW_KEY_F1))
     {
+        window->setFullscreen(true);
     }
 }
 

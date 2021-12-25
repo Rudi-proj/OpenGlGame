@@ -1,8 +1,8 @@
-# include "window.hpp"
-#include "input.hpp"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include "window.hpp"
+#include "input.hpp"
 
 GameWindow::GameWindow()
 {
@@ -67,9 +67,37 @@ void GameWindow::gameLoop()
 
         glfwSwapBuffers(window);
         glfwPollEvents();
+        Input::handleKeyboardInput(this);
     }
     glfwTerminate();
 
     std::cout << "Game terminated."
               << "\n";
+}
+
+void GameWindow::setFullscreen(bool fullscreen)
+{
+	GLFWmonitor *monitor = glfwGetPrimaryMonitor();
+	if (monitor == nullptr)
+	{
+		std::cout << "Monitor returned NULL";
+		return;
+	}
+
+	if (fullscreen)
+	{
+		//windowed mode -> put in fullscreen mode
+		const GLFWvidmode *mode = glfwGetVideoMode(monitor);
+		glfwSetWindowMonitor(window, monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
+	}
+	else
+	{
+		//fullscree -> put in windowed mode
+
+	}
+}
+
+void GameWindow::destroyWindow()
+{
+	glfwDestroyWindow(window);
 }
