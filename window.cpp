@@ -53,6 +53,7 @@ int GameWindow::createWindow()
 	}
 
 	glfwSetKeyCallback(window, Input::keyPressedCallback);
+	glfwSetCursorPosCallback(window, Input::cursorPositionCallback);
 
 	glViewport(0, 0, windowWidth, windowHeight);
     return 0;    
