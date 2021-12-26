@@ -54,7 +54,7 @@ void Input::handleKeyboardInput(GameWindow* window)
 
     if(isKeyPressed(GLFW_KEY_X) && isKeyPressed(GLFW_KEY_LEFT_CONTROL))
     {
-        window->destroyWindow();
+        window->closeWindow();
     }
 
     if(isKeyPressed(GLFW_KEY_F1))

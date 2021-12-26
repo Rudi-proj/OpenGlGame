@@ -104,6 +104,11 @@ void GameWindow::destroyWindow()
 	glfwDestroyWindow(window);
 }
 
+void GameWindow::closeWindow()
+{
+	glfwSetWindowShouldClose(window, GLFW_TRUE);
+}
+
 void GameWindow::toggleFullscreen()
 {
 	if(isFullscreenMode)

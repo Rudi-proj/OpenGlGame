@@ -13,6 +13,7 @@ public:
     bool isFullscreen();
     void toggleFullscreen();
 
+    void closeWindow();
     void destroyWindow();
 
 protected:
