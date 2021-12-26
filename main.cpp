@@ -6,7 +6,6 @@
 
 int main()
 {
-	Input::initMap();
 	GameWindow gWindow;
 
 	gWindow.initGlfw();

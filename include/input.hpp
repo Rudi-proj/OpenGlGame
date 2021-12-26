@@ -14,14 +14,12 @@ namespace Input
     } cursorPosition;
 
     extern cursorPosition cursorPositionUpdated;
-    extern std::map<int, bool> keyPressedMap;
-
-    void initMap();
+    extern bool keyPressedData[GLFW_KEY_LAST];
 
     void keyPressedCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
     void cursorPositionCallback(GLFWwindow* window, double xpos, double ypos);
 
-    bool isKeyPressed(int key);
+    bool isKeyPressed(int key, bool resetKey = true);
 
     void handleKeyboardInput(GameWindow* window);
 

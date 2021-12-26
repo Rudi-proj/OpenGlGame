@@ -6,7 +6,7 @@
 
 namespace Input
 {
-    std::map<int, bool> keyPressedMap;
+    bool keyPressedData[GLFW_KEY_LAST] = {};
     cursorPosition cursorPositionUpdated = {
         .xPos = 0.0f,
         .yPos = 0.0f,
@@ -16,11 +16,13 @@ namespace Input
 
 void Input::keyPressedCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
-    if(keyPressedMap.find(key) != keyPressedMap.end() && action == GLFW_PRESS)
+    if(key > 0 && key < GLFW_KEY_LAST && action == GLFW_PRESS)
     {
-        //key is in map
-        std::cout << "Key " << key <<" in map\n";
-        keyPressedMap[key] = true;
+        keyPressedData[key] = true;
+    }
+    else if(key > 0 && key < GLFW_KEY_LAST && action == GLFW_RELEASE)
+    {
+        keyPressedData[key] = false;
     }
 }
 
@@ -28,20 +30,29 @@ void Input::cursorPositionCallback(GLFWwindow* window, double xpos, double ypos)
 {
     cursorPositionUpdated.xPos = xpos;
     cursorPositionUpdated.yPos = ypos;
+    Helper::printCursorPos();
 }
 
-bool Input::isKeyPressed(int key)
+bool Input::isKeyPressed(int key, bool resetKey)
 {
-    bool isPressed = keyPressedMap[key];
-    if(isPressed){
-        keyPressedMap[key] = false;
+    bool isPressed = keyPressedData[key];    
+
+    if(resetKey)
+    {
+        keyPressedData[key] = false;
     }
+
     return isPressed;
 }
 
 void Input::handleKeyboardInput(GameWindow* window)
 {
-    if(isKeyPressed(GLFW_KEY_X))
+    if(isKeyPressed(GLFW_KEY_E))
+    {
+        std::cout << "E key Pressed" << std::flush;
+    }
+
+    if(isKeyPressed(GLFW_KEY_X) && isKeyPressed(GLFW_KEY_LEFT_CONTROL))
     {
         window->destroyWindow();
     }
@@ -52,13 +63,7 @@ void Input::handleKeyboardInput(GameWindow* window)
     }
 }
 
-void Input::initMap()
-{
-    keyPressedMap[GLFW_KEY_ESCAPE] = false;
-    keyPressedMap[GLFW_KEY_F1] = false;
-}
-
 void Input::Helper::printCursorPos()
 {
-    std::cout << Input::cursorPositionUpdated.xPos << " / " << Input::cursorPositionUpdated.yPos << "\n";
+    std::cout << Input::cursorPositionUpdated.xPos << " / " << Input::cursorPositionUpdated.yPos << "\n" << std::flush;
 }
